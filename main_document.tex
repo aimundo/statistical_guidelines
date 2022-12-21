@@ -1,0 +1,558 @@
+% !TeX program = pdfLaTeX
+\documentclass[smallextended]{svjour3}       % onecolumn (second format)
+%\documentclass[twocolumn]{svjour3}          % twocolumn
+%
+\smartqed  % flush right qed marks, e.g. at end of proof
+%
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+
+\usepackage[hyphens]{url} % not crucial - just used below for the URL
+\usepackage{hyperref}
+
+%
+% \usepackage{mathptmx}      % use Times fonts if available on your TeX system
+%
+% insert here the call for the packages your document requires
+%\usepackage{latexsym}
+% etc.
+%
+% please place your own definitions here and don't use \def but
+% \newcommand{}{}
+%
+% Insert the name of "your journal" with
+% \journalname{myjournal}
+%
+
+%% load any required packages here
+
+
+
+% tightlist command for lists without linebreak
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% From pandoc table feature
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+
+% Pandoc citation processing
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+% for Pandoc 2.8 to 2.10.1
+\newenvironment{cslreferences}%
+  {}%
+  {\par}
+% For Pandoc 2.11+
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\begin{document}
+
+
+\title{Enhancing statistical reproducibility in the biomedical sciences:
+practical guides for the everyday researcher }
+
+
+    \titlerunning{Enhancing statistical reproducibility in the
+biomedical sciences}
+
+\author{  Ariel Mundo Ortiz \and  Bouchra Nasri \and  }
+
+
+\institute{
+        Ariel Mundo Ortiz \at
+     École de santé publique, Université de Montréal, centre de
+recherches mathématiques, Université de Montréal \\
+     \email{\href{mailto:ariel.mundo.ortiz@umontreal.ca}{\nolinkurl{ariel.mundo.ortiz@umontreal.ca}}}  %  \\
+%             \emph{Present address:} of F. Author  %  if needed
+    \and
+        Bouchra Nasri \at
+     École de santé publique, Université de Montréal \\
+     \email{\href{mailto:bouchra.nasri@umontreal.ca}{\nolinkurl{bouchra.nasri@umontreal.ca}}}  %  \\
+%             \emph{Present address:} of F. Author  %  if needed
+    \and
+    }
+
+\date{Received: date / Accepted: date}
+% The correct dates will be entered by the editor
+
+
+\maketitle
+
+\begin{abstract}
+Reproducibility continues to be a major goal of biomedical research.
+However, the field still struggles to use Statistics (a core component
+of reproducibility) in a reproducible way. In this paper, we present
+some of the reasons that we believe contribute to this ongoing
+disconnect between Statistics and reproducible biomedical research, and
+we also present guidelines aimed to help trainees and researchers to
+internalize the need of using Statistics in a manner that enhances
+reproducibility.
+\\
+\keywords{
+        keywordA, keywordB \and
+    }
+
+
+\end{abstract}
+
+
+\def\spacingset#1{\renewcommand{\baselinestretch}%
+{#1}\small\normalsize} \spacingset{1}
+
+
+\hypertarget{abstract}{%
+\section{Abstract}\label{abstract}}
+
+\hypertarget{background}{%
+\section{Background}\label{background}}
+
+The ``reproducibility crisis'' in science has affected particularly
+biomedical research , where it is believed that many articles describe
+results that cannot be replicated\textsuperscript{1,2}. Although it is
+recognized that some indicators of reproducibility have improved in
+recent years in publications in the field, it is also recognized that
+there is still a large room for improvement\textsuperscript{3}.
+
+In recent years, different studies have identified practices that could
+be implemented to improve various aspects of reproducibility in the
+field, suggesting (among other recommendations) greater involvement of
+senior investigators in the data collection/analysis
+process\textsuperscript{4}, and the use of reproducible tools and
+workflows\textsuperscript{5,6}. However, the incorrect use of statistics
+is also a key factor that limits reproducibility\textsuperscript{7,8}.
+
+It is well established that statistics are misused in biomedical
+research\textsuperscript{8}, but we believe it is important to also
+highlight some of the causes that drive this misuse in order if we are
+to improve and remedy this issue. We believe that an important factor
+that drives the improper use of statistics is the fact that statistics
+is a subject that is seen as abstract and obscure by biomedical trainees
+and researchers. In fact, it is known that statistics is something that
+worries students\textsuperscript{9}. The biomedical field is not exempt
+from seeing statistics as a ``necessary evil'' and consequently,
+continuing to perpetuate systemic issues that affect reproducibility.
+Overall, this results in a disconnect between what \emph{should} be done
+to address statistical reproducibility in biomedical research, and the
+approach that \emph{is} taken by the field.
+
+We believe that presenting guidelines that address some of the issues
+that the field faces in terms of statistical reproducibility is a
+necessary step towards improving statistical practices and preparing
+future generations of scientists to routinely perform research that is
+open and reproducible.
+
+\hypertarget{guidelines}{%
+\section{Guidelines}\label{guidelines}}
+
+\hypertarget{why-are-we-doing-this}{%
+\subsection{``Why are we doing this?''}\label{why-are-we-doing-this}}
+
+The very abstract and quantitative nature of Statistics often leads
+students to worry and to adopt a ``memorisation'' strategy to approach
+it\textsuperscript{10}, a phenomenon that trainees in biomedical
+research are not exempt of. However, memory alone does not suffice to
+successfully analyze ``real'' data: it has been shown that researchers
+often incorrectly analyze experimental designs, and checks that are to
+be made before experiments are done after experiments have been
+completed\textsuperscript{11}.
+
+It is therefore important that trainees focus on understanding the
+``why'' (the rationale) of the statistical tools they intend to use.
+Indeed, Statistics cannot be appropriately used without understanding
+the assumptions and the basic theory that underlies
+them\textsuperscript{12}. Researchers tend to think that Statistics are
+only needed when a statistical test needs to be performed, but the truth
+of the matter is that Statistics play a crucial role at every stage of
+research: they are needed to determine the number of observations
+required to achieve a certain statistical power, as well as to determine
+the choice of experimental design that needs to be used to answer the
+question of interest. These are steps that precede a ``statistical
+test'', and they need to be taken into careful consideration before any
+experiments or data are to be collected.
+
+\hypertarget{learning-is-necessary}{%
+\subsection{Learning is necessary}\label{learning-is-necessary}}
+
+In the previous point we have indicated that researchers need to learn
+the foundations of Statistics in order to adequately use them. This is a
+view shared by many others, that have emphasized the importance of
+statistical education as a way of addressing the reproducibility
+crisis\textsuperscript{13}. However, the very nature of Statistics makes
+it distinct from learning physics, or mathematics\textsuperscript{10}.
+It has been suggested that a problem-based learning approach might be
+best suited to teach Statistics\textsuperscript{14}, but it is possible
+that most trainees will not be able to benefit from that approach in the
+Statistics classes they are required to take (if that is the case). This
+implies that the most likely option for a trainee is a combination of
+formal Statistical training (taking classes in a University) and
+self-guided study. After all, not only there is a wide range of
+variation among the academic requirements set by each
+program\textsuperscript{15} but it is also possible that trainees are
+interested in a particular statistical topic without committing the time
+and resources needed for a full course.
+
+Fortunately, the educational resources of Statistics have increased
+vastly over the last decade, and nowadays there are multiple materials
+that cover a wide range of statistical topics without excessive
+mathematical complexity. For example, those interested in revisiting
+statistical foundations will find an excellent resource in the work of
+James et al.\textsuperscript{16}. Topics on generalized linear models
+and generalized linear mixed models (which we believe are extremely
+important for biomedical researchers to learn, but that might not be
+covered in the Statistics courses required by their programs) can be
+found in McCulloch\textsuperscript{17}, Dobson\textsuperscript{18}, and
+Stroup\textsuperscript{19}.
+
+\hypertarget{what-everybody-does-might-not-be-correct}{%
+\subsection{What ``everybody does'' might not be
+correct}\label{what-everybody-does-might-not-be-correct}}
+
+This point might seem redundant in the light of what we indicated above
+about the importance of learning Statistics. However, our own experience
+has shown that a deterrent for trainees to learn Statistics is that it
+suffices to mimic the analyses they have seen in a paper (``what
+everybody does''). It is tempting to repeat the analysis presented in a
+previous study, as it might seem that because the study passed peer
+review, its methodology (including its statistical analyses)
+\emph{should} be correct. However, without a clear understanding of the
+assumptions behind the analysis is correct in the first place. The truth
+is that that is seldom the case, as Hardwicke et al.\textsuperscript{20}
+showed that most leading biomedical journals do not perform specialized
+statistical reviews on papers they published (only 23\% reported that
+they did statistical analyses).
+
+Sadly, statistical errors plague biomedical studies\textsuperscript{21},
+and without a solid understanding of the assumptions and limitations of
+a statistical method, researchers will be unable to critically assess
+the analyses presented and determine if the methodology presented is
+applicable in their case. Peer review is not perfect, and researchers
+need to internalize the fact that repetition is not enough to achieve
+reproducibility.
+
+\hypertarget{statistical-analyses-need-to-be-reproducible}{%
+\subsection{Statistical analyses need to be
+reproducible}\label{statistical-analyses-need-to-be-reproducible}}
+
+Biomedical data is complex and nowadays, computational skills are
+necessary to successfully analyze the datasets that are obtained as a
+result of experiments\textsuperscript{5}. However, there seems to be gap
+between the computational skills that trainees acquire to collect their
+data, and the skills they possess to perform statistical analyses of
+such data. Because of the ``memorizing'' approach that we have mentioned
+above, many researchers prefer a ``click'' approach to perform their
+statistical analyses (using a program that only requires them to select
+certain options from a menu). Although a ``click'' approach is
+apparently more efficient from a time perspective, the biggest trade-off
+is that there is no real understanding from the user of what is actually
+happening behind the scenes\textsuperscript{22}.
+
+Others have indicated the importance of coding to create a workflow that
+minimizes the errors associated with manual
+manipulation\textsuperscript{23}, an opinion we concur with and believe
+is equally applicable in the context of statistical analyses. Although
+statistical analyses can be performed by a myriad of different
+computational tools (such as R, Python, and Julia), no statistical
+analysis is complete if it is not reproducible.
+
+There are some tools that are specifically suited to allow reproducible
+workflows. Following on the recommendations of Brito et
+al.\textsuperscript{5} regarding the use of open source tools to create
+reproducible workflows, in Table 1 we provide a list of open source
+tools that are designed to combine text and computations (therefore
+allowing to create reproducible documents), that are easily accessible
+to biomedical researchers, that support multiple computational
+languages, and that have multiple resources (such as examples, books,
+and guides) that can help researchers familiarize themselves with how
+they work.
+
+\footnotesize
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1587}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2857}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3175}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2381}}@{}}
+\caption{Tools that allow for reproducible statistical
+analyses}\tabularnewline
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+Tool
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Characteristics
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Languages supported
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Resources
+\end{minipage} \\
+\midrule()
+\endfirsthead
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+Tool
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Characteristics
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Languages supported
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Resources
+\end{minipage} \\
+\midrule()
+\endhead
+RMarkdown & Allows to create reproducible documents (notebooks, reports,
+books, scientific articles) that combine coding and text. Output formats
+include HTML, PDF, MS Word, Beamer and others & R, Python, SQL, Julia
+and others & Xie et al.\textsuperscript{24}, an online version of the
+book can be found at \url{https://bookdown.org/yihui/rmarkdown/}),
+examples can be found at
+\url{https://rmarkdown.rstudio.com/gallery.html} \\
+Bookdown & Allows to create reproducible documents and follows the same
+syntax of RMarkdown, but includes added capabilities such as
+cross-referencing and facilitating the creation of documents (such as
+books) that are composed of multiple RMarkdown documents. & R, C/C++,
+Python, Fortran, Julia, SQL, Stan and others & Xie\textsuperscript{25},
+an online version of the book can be found at
+\url{https://bookdown.org/yihui/bookdown/} \url{https://bookdown.org/}
+contains examples of books created using Bookdown. \\
+Quarto & Publishing system for scientific and technical documents that
+is compatible with VS Code, RStudio, and Jupyter Notebooks. Documents
+can be compiled in HTML, PDF, MS Word, Beamer, Shiny, MS PowerPoint,
+Revealjs presentations, and many others & R, Python, Julia, Observable &
+\url{https://quarto.org/} contains multiple examples, tutorials, and use
+guides \\
+\bottomrule()
+\end{longtable}
+
+\normalsize
+
+\hypertarget{interpretation-is-more-important-than-a-p-value}{%
+\subsection{Interpretation is more important than a
+p-value}\label{interpretation-is-more-important-than-a-p-value}}
+
+p-values should not be the final goal of some data, but rather the
+interpretation by the researcher is what is important.
+
+\begin{itemize}
+\item
+  p-values and positive results continue to dominate the field
+\item
+  what a p-value actually tells (maybe example with data)?
+\item
+  p-value should not be the goal of a study
+\end{itemize}
+
+\hypertarget{models-are-just-that-models}{%
+\subsection{Models are just that,
+models}\label{models-are-just-that-models}}
+
+\begin{itemize}
+\item
+  Biology is complex
+\item
+  Models are a simplification
+\item
+  They offer an explanation, but that is not the only explanation
+\end{itemize}
+
+\hypertarget{references}{%
+\section*{References}\label{references}}
+\addcontentsline{toc}{section}{References}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{0}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-begley2015}{}}%
+\CSLLeftMargin{1. }%
+\CSLRightInline{Begley CG, Ioannidis JP. Reproducibility in science:
+Improving the standard for basic and preclinical research.
+\emph{Circulation research}. 2015;116(1):116-126.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-oakdenrayner2018}{}}%
+\CSLLeftMargin{2. }%
+\CSLRightInline{Oakden-Rayner L, Beam AL, Palmer LJ. Medical journals
+should embrace preprints to address the reproducibility crisis.
+\emph{International Journal of Epidemiology}. 2018;47(5):1363-1365.
+doi:\href{https://doi.org/10.1093/ije/dyy105}{10.1093/ije/dyy105}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-wallach2018}{}}%
+\CSLLeftMargin{3. }%
+\CSLRightInline{Wallach JD, Boyack KW, Ioannidis JP. Reproducible
+research practices, transparency, and open access data in the biomedical
+literature, 2015--2017. \emph{PLoS biology}. 2018;16(11):e2006930.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-samsa2019}{}}%
+\CSLLeftMargin{4. }%
+\CSLRightInline{Samsa G, Samsa L. A guide to reproducibility in
+preclinical research. \emph{Academic Medicine}. 2019;94(1):47-52.
+doi:\href{https://doi.org/10.1097/acm.0000000000002351}{10.1097/acm.0000000000002351}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-brito2020}{}}%
+\CSLLeftMargin{5. }%
+\CSLRightInline{Brito JJ, Li J, Moore JH, et al. {Recommendations to
+enhance rigor and reproducibility in biomedical research}.
+\emph{GigaScience}. 2020;9(6).
+doi:\href{https://doi.org/10.1093/gigascience/giaa056}{10.1093/gigascience/giaa056}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-papin2020}{}}%
+\CSLLeftMargin{6. }%
+\CSLRightInline{Papin JA, Gabhann FM, Sauro HM, Nickerson D, Rampadarath
+A. Improving reproducibility in computational biology research.
+\emph{{PLOS} Computational Biology}. 2020;16(5):e1007881.
+doi:\href{https://doi.org/10.1371/journal.pcbi.1007881}{10.1371/journal.pcbi.1007881}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-montgomery2019}{}}%
+\CSLLeftMargin{7. }%
+\CSLRightInline{Erwin B. Montgomery Jr. \emph{Reproducibility in
+Biomedical Research}. Elsevier; 2019.
+doi:\href{https://doi.org/10.1016/c2018-0-02296-3}{10.1016/c2018-0-02296-3}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-thiese2015}{}}%
+\CSLLeftMargin{8. }%
+\CSLRightInline{Thiese MS, Arnold ZC, Walker SD. The misuse and abuse of
+statistics in biomedical research. \emph{Biochemia medica}.
+2015;25(1):5-11.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-ralston2019}{}}%
+\CSLLeftMargin{9. }%
+\CSLRightInline{Ralston K. {``Sociologists shouldn't have to study
+statistics''}: Epistemology and anxiety of statistics in sociology
+students. \emph{Sociological Research Online}. 2019;25(2):219-235.
+doi:\href{https://doi.org/10.1177/1360780419888927}{10.1177/1360780419888927}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-ramsey1999}{}}%
+\CSLLeftMargin{10. }%
+\CSLRightInline{Ramsey JB. Why do students find statistics so difficult.
+\emph{Proccedings of the 52th Session of the ISI Helsinki}. Published
+online 1999:10-18.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-kitchenham2019}{}}%
+\CSLLeftMargin{11. }%
+\CSLRightInline{Kitchenham B, Madeyski L, Brereton P. Problems with
+statistical practice in human-centric software engineering experiments.
+In: \emph{Proceedings of the Evaluation and Assessment on Software
+Engineering}. {ACM}; 2019.
+doi:\href{https://doi.org/10.1145/3319008.3319009}{10.1145/3319008.3319009}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-marino2018}{}}%
+\CSLLeftMargin{12. }%
+\CSLRightInline{Marino MJ. Statistical analysis in preclinical
+biomedical research. In: \emph{Research in the Biomedical Sciences}.
+Elsevier; 2018:107-144.
+doi:\href{https://doi.org/10.1016/b978-0-12-804725-5.00003-3}{10.1016/b978-0-12-804725-5.00003-3}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-patil2022}{}}%
+\CSLLeftMargin{13. }%
+\CSLRightInline{Patil S, Satagopan J. Building and teaching a statistics
+curriculum for post-doctoral biomedical scientists at a free-standing
+cancer center. \emph{{CHANCE}}. 2022;35(1):56-64.
+doi:\href{https://doi.org/10.1080/09332480.2022.2039036}{10.1080/09332480.2022.2039036}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-ekmekci2012}{}}%
+\CSLLeftMargin{14. }%
+\CSLRightInline{Ekmekci O, Hancock AB, Swayze S. Teaching statistical
+research methods to graduate students: Lessons learned from three
+different degree programs. \emph{International Journal of Teaching and
+Learning in Higher Education}. 2012;24(2):272-279.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-gatchell2014}{}}%
+\CSLLeftMargin{15. }%
+\CSLRightInline{Gatchell D, Linsenmeier R. Similarities and differences
+in undergraduate biomedical engineering curricula in the united states.
+In: \emph{2014 {ASEE} Annual Conference {\&} Exposition Proceedings}.
+{ASEE} Conferences.
+doi:\href{https://doi.org/10.18260/1-2--23015}{10.18260/1-2-\/-23015}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-james2021}{}}%
+\CSLLeftMargin{16. }%
+\CSLRightInline{James G, Witten D, Hastie T, Tibshirani R. \emph{An
+Introduction to Statistical Learning}. Springer {US}; 2021.
+doi:\href{https://doi.org/10.1007/978-1-0716-1418-1}{10.1007/978-1-0716-1418-1}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-mcculloch2004}{}}%
+\CSLLeftMargin{17. }%
+\CSLRightInline{McCulloch CE, Searle SR. \emph{Generalized, Linear, and
+Mixed Models}. John Wiley \& Sons; 2004.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-dobson2018}{}}%
+\CSLLeftMargin{18. }%
+\CSLRightInline{Dobson AJ, Barnett AG. \emph{An Introduction to
+Generalized Linear Models, Fourth Edition}. 4th ed. CRC Press; 2018.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-stroup2012}{}}%
+\CSLLeftMargin{19. }%
+\CSLRightInline{Stroup WW. \emph{Generalized Linear Mixed Models}. CRC
+Press; 2012.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-hardwicke2020}{}}%
+\CSLLeftMargin{20. }%
+\CSLRightInline{Hardwicke TE, Goodman SN. How often do leading
+biomedical journals use statistical experts to evaluate statistical
+methods? The results of a survey. Koletsi D, ed. \emph{{PLOS} {ONE}}.
+2020;15(10):e0239598.
+doi:\href{https://doi.org/10.1371/journal.pone.0239598}{10.1371/journal.pone.0239598}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-lang2004}{}}%
+\CSLLeftMargin{21. }%
+\CSLRightInline{Lang T. Twenty statistical errors even you can find in
+biomedical research articles. \emph{Croatian Medical Journal}.
+2004;45:361-370.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-deardorff2020}{}}%
+\CSLLeftMargin{22. }%
+\CSLRightInline{Deardorff A. Why do biomedical researchers learn to
+program? An exploratory investigation. \emph{Journal of the Medical
+Library Association: JMLA}. 2020;108(1):29.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-sandve2013}{}}%
+\CSLLeftMargin{23. }%
+\CSLRightInline{Sandve GK, Nekrutenko A, Taylor J, Hovig E. Ten simple
+rules for reproducible computational research. Bourne PE, ed.
+\emph{{PLoS} Computational Biology}. 2013;9(10):e1003285.
+doi:\href{https://doi.org/10.1371/journal.pcbi.1003285}{10.1371/journal.pcbi.1003285}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-xie2018}{}}%
+\CSLLeftMargin{24. }%
+\CSLRightInline{Xie Y, Allaire JJ, Grolemund G. \emph{{R} Markdown}. CRC
+Press; 2018.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-xie2016}{}}%
+\CSLLeftMargin{25. }%
+\CSLRightInline{Xie Y. Bookdown: Authoring books and technical documents
+with r markdown. In: \emph{The {R} Series}. CRC Press; 2016:47-66.}
+
+\end{CSLReferences}
+
+
+\bibliographystyle{spbasic}
+\bibliography{bibliography/refs.bib}
+
+
+\end{document}

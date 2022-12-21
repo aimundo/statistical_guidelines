@@ -1,0 +1,43 @@
+---
+title: "Enhancing statistical reproducibility in the biomedical sciences: practical guides for the everyday researcher"
+titlerunning: Enhancing statistical reproducibility in the biomedical sciences
+#authorrunning: Short form of author list if too long for running head
+authors: 
+- name: "Ariel Mundo Ortiz"
+  address: École de santé publique, Université de Montréal, centre de recherches mathématiques, Université de Montréal
+  email: ariel.mundo.ortiz@umontreal.ca
+- name: "Bouchra Nasri"
+  address: École de santé publique, Université de Montréal
+  email: bouchra.nasri@umontreal.ca
+output:
+  rticles::springer_article:
+    #citation_package: natbib
+    keep_tex: yes
+    number_sections: yes
+    toc: no
+keywords: keywordA, keywordB
+abstract: Reproducibility continues to be a major goal of biomedical research. However, the field still struggles to use Statistics (a core component of reproducibility) in a reproducible way. In this paper, we present some of the reasons that we believe contribute to this ongoing disconnect between Statistics and reproducible biomedical research, and we also present guidelines aimed to help trainees and researchers to internalize the need of using Statistics in a manner that enhances reproducibility.
+#author: "Ariel Mundo Ortiz"
+#date: "12/15/2022"
+#output:
+#  bookdown::pdf_document2:
+#    keep_tex: true
+csl: bibliography/american-medical-association.csl #style for references
+bibliography: bibliography/refs.bib
+urlcolor: blue
+---
+# Abstract 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r child='sections/01-background.Rmd'}
+```
+
+
+```{r child='sections/02-guidelines.Rmd'}
+```
+
+# References

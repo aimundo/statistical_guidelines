@@ -1,0 +1,67 @@
+# Guidelines
+
+## “Why are we doing this?”
+
+The very abstract and quantitative nature of Statistics often leads students to worry and to adopt a "memorisation" strategy to approach it [@ralston2019, @ramsey1999], a phenomenon that trainees in biomedical research are not exempt of. However, memory alone does not suffice to successfully analyze "real" data: it has been shown that researchers often incorrectly analyze experimental designs, and checks that are to be made before experiments are done after experiments have been completed [@kitchenham2019]. 
+
+It is therefore important that trainees focus on understanding the "why" (the rationale) of the statistical tools they intend to use. Indeed, Statistics cannot be appropriately used without understanding the assumptions and the basic theory that underlies them [@marino2018]. Researchers tend to think that Statistics are only needed when a statistical test needs to be performed,  but the truth of the matter is that Statistics play a crucial role at every stage of research: they are needed to determine the number of observations required to achieve a certain statistical power, as well as to determine the choice of experimental design that needs to be used to answer the question of interest. These are steps that precede a "statistical test", and they need to be taken into careful consideration before any experiments or data are to be collected.
+
+
+## Learning is necessary
+
+In the previous point we have indicated that researchers need to learn the foundations of Statistics in order to adequately use them. This is a view shared by many others, that have emphasized the importance of statistical education as a way of addressing the reproducibility crisis [@patil2022]. However, the very nature of Statistics makes it distinct from learning physics, or mathematics [@ramsey1999]. It has been suggested that a problem-based learning approach might be best suited to teach Statistics [@ekmekci2012], but it is possible that most trainees will not be able to benefit from that approach in the Statistics classes they are required to take (if that is the case). This implies that the most likely option for a trainee is a combination of formal Statistical training (taking classes in a University) and self-guided study. After all, not only there is a wide range of variation among the academic requirements set by each program [@gatchell2014] but it is also possible that trainees are interested in a particular statistical topic without committing the time and resources needed for a full course. 
+
+Fortunately, the educational resources of Statistics have increased vastly over the last decade, and nowadays there are multiple materials that cover a wide range of statistical topics without excessive mathematical complexity. For example, those interested in revisiting statistical foundations will find an excellent resource in the  work of James et al. [@james2021]. Topics on generalized linear models and generalized linear mixed models (which we believe are extremely important for biomedical researchers to learn, but that might not be covered in the Statistics courses required by their programs) can be found in McCulloch [@mcculloch2004], Dobson [@dobson2018], and Stroup [@stroup2012].  
+
+<!-- Finally, McElreath [@mcelreath2020] is an excellent lecture  -->
+
+## What "everybody does" might not be correct
+
+This point might seem redundant in the light of what we indicated above about the importance of learning Statistics. However, our own experience has shown that a deterrent for trainees to learn Statistics is that it suffices to mimic the analyses they have seen in a paper ("what everybody does"). It is tempting to repeat the analysis presented in a previous study, as it might seem that because the study passed peer review, its methodology (including its statistical analyses) _should_ be correct. However, without a clear understanding of the assumptions behind the analysis is correct in the first place. The truth is that that is seldom the case, as Hardwicke et al. [@hardwicke2020] showed that most leading biomedical journals do not perform specialized statistical reviews on papers they published (only 23% reported that they did statistical analyses). 
+
+Sadly, statistical errors plague biomedical studies [@lang2004], and without a solid understanding of the assumptions and limitations of a statistical method, researchers will be unable to critically assess the analyses presented and determine if the methodology presented is applicable in their case. Peer review is not perfect, and researchers need to internalize the fact that repetition is not enough to achieve reproducibility. 
+
+## Statistical analyses need to be reproducible
+
+Biomedical data is complex and nowadays, computational skills are necessary to successfully analyze the datasets that are obtained as a result of experiments [@brito2020]. However, there seems to be gap between the computational skills that trainees acquire to collect their data, and the skills they possess to perform statistical analyses of such data. Because of the "memorizing" approach that we have mentioned above, many researchers prefer a "click" approach to perform their statistical analyses (using a program that only requires them to select certain options from a menu). Although a "click" approach is apparently more efficient from a time perspective, the biggest trade-off is that there is no real understanding from the user of what is actually happening behind the scenes [@deardorff2020].
+
+Others have indicated the importance of coding to create a workflow that minimizes the errors associated with manual manipulation [@sandve2013], an opinion we concur with and believe is equally applicable in the context of statistical analyses. Although statistical analyses can be performed by a myriad of different computational tools (such as R, Python, and Julia), no statistical analysis is complete if it is not reproducible.
+
+There are some tools that are specifically suited to allow reproducible workflows. Following on the recommendations of Brito et al. [@brito2020] regarding the use of open source tools to create reproducible workflows, in Table 1 we provide a list of open source tools that are designed to combine text and computations (therefore allowing to create reproducible documents), that are easily accessible to biomedical researchers, that support multiple computational languages, and that have multiple resources (such as examples, books, and guides) that can help researchers familiarize themselves with how they work.
+
+\footnotesize
+
+
+| Tool     |  Characteristics | Languages supported | Resources
+|:---------|:----------------:|:------------------:|:-------------:|
+RMarkdown | Allows to create reproducible documents (notebooks, reports, books, scientific articles) that combine coding and text. Output formats include HTML, PDF, MS Word, Beamer and others| R, Python, SQL, Julia and others| Xie et al. [@xie2018], an online version of the book can be found at [https://bookdown.org/yihui/rmarkdown/](https://bookdown.org/yihui/rmarkdown/)), examples can be found at [https://rmarkdown.rstudio.com/gallery.html](https://rmarkdown.rstudio.com/gallery.html)
+Bookdown | Allows to create reproducible documents and follows the same syntax of RMarkdown, but includes added capabilities such as cross-referencing and facilitating the creation of documents (such as books) that are composed of multiple RMarkdown documents. |R, C/C++, Python, Fortran, Julia, SQL, Stan and others| Xie [@xie2016], an online version of the book can be found at [https://bookdown.org/yihui/bookdown/](https://bookdown.org/yihui/bookdown/) [https://bookdown.org/](https://bookdown.org/) contains examples of books created using Bookdown.  
+Quarto| Publishing system for scientific and technical documents that is compatible with VS Code, RStudio, and Jupyter Notebooks. Documents can be compiled in HTML, PDF, MS Word, Beamer, Shiny, MS PowerPoint, Revealjs presentations, and many others| R, Python, Julia, Observable| [https://quarto.org/](https://quarto.org/) contains multiple examples, tutorials, and use guides |
+
+Table: Tools that allow for reproducible statistical analyses
+
+\normalsize
+
+<!-- - Experimental design comes before a statistical test: you first design the experiment and understand the question you are trying to answer, the statistical test needs to be in function of the experimental design (a lot of people just collect data and then try to see what they can do). -->
+
+## Interpretation is more important than a p-value 
+
+
+p-values should not be the final goal of some data, but rather the interpretation by the researcher is what is important.
+
+- p-values and positive results continue to dominate the field
+
+- what a p-value actually tells (maybe example with data)?
+
+- p-value should not be the goal of a study
+
+## Models are just that, models
+
+- Biology is complex
+
+- Models are a simplification 
+
+- They offer an explanation, but that is not the only explanation
+
+
+

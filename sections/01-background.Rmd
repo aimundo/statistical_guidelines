@@ -1,0 +1,10 @@
+# Background
+
+The "reproducibility crisis" in science has affected particularly biomedical research ,  where it is believed that many articles describe results that cannot be replicated [@begley2015;@oakdenrayner2018]. Although it is recognized that some indicators of reproducibility have improved in recent years in publications in the field, it is also recognized that there is still a large room for improvement [@wallach2018].
+
+In recent years, different studies have identified practices that could be implemented to improve various aspects of reproducibility in the field, suggesting (among other recommendations)  greater involvement of senior investigators in the data collection/analysis process [@samsa2019], and the use of reproducible tools and workflows [@brito2020;@papin2020]. However, the incorrect use of statistics is also a key factor that limits reproducibility [@montgomery2019;@thiese2015]. 
+
+It is well established that statistics are misused in biomedical research [@thiese2015], but we believe it is important to also highlight some of the causes that drive this misuse in order if we are to improve and remedy this issue. We believe that an important factor that drives the improper use of statistics is the fact that statistics is a subject that is seen as abstract and obscure by biomedical trainees and researchers. In fact, it is known that statistics is something that worries students [@ralston2019]. The biomedical field is not exempt from seeing statistics as a "necessary evil" and consequently, continuing to perpetuate systemic issues that affect reproducibility. Overall, this results in a disconnect between what _should_ be done to address statistical reproducibility in biomedical research, and the approach that _is_ taken by the field.  
+
+We believe that presenting guidelines that address some of the issues that the field faces in terms of statistical reproducibility is a necessary step towards improving statistical practices and preparing future generations of scientists to routinely perform research that is open and reproducible.
+

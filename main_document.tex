@@ -85,12 +85,18 @@ practical guides for the everyday researcher }
     \titlerunning{Enhancing statistical reproducibility in the
 biomedical sciences}
 
-\author{  Ariel Mundo Ortiz \and  Bouchra Nasri \and  }
+\author{  Ariel Mundo Ortiz \and  Ariel Mundo Ortiz \and  Bouchra
+Nasri \and  }
 
 
 \institute{
         Ariel Mundo Ortiz \at
-     École de santé publique, Université de Montréal, centre de
+    \\
+     %  \\
+%             \emph{Present address:} of F. Author  %  if needed
+    \and
+        Ariel Mundo Ortiz \at
+     École de santé publique, Université de Montréal, \newline Centre de
 recherches mathématiques, Université de Montréal \\
      \email{\href{mailto:ariel.mundo.ortiz@umontreal.ca}{\nolinkurl{ariel.mundo.ortiz@umontreal.ca}}}  %  \\
 %             \emph{Present address:} of F. Author  %  if needed
@@ -200,8 +206,9 @@ question of interest. These are steps that precede a ``statistical
 test'', and they need to be taken into careful consideration before any
 experiments or data are to be collected.
 
-\hypertarget{learning-is-necessary}{%
-\subsection{Learning is necessary}\label{learning-is-necessary}}
+\hypertarget{learning-statistics-is-necessary}{%
+\subsection{Learning statistics is
+necessary}\label{learning-statistics-is-necessary}}
 
 In the previous point we have indicated that researchers need to learn
 the foundations of Statistics in order to adequately use them. This is a
@@ -233,9 +240,9 @@ covered in the Statistics courses required by their programs) can be
 found in McCulloch\textsuperscript{17}, Dobson\textsuperscript{18}, and
 Stroup\textsuperscript{19}.
 
-\hypertarget{what-everybody-does-might-not-be-correct}{%
-\subsection{What ``everybody does'' might not be
-correct}\label{what-everybody-does-might-not-be-correct}}
+\hypertarget{you-should-not-aim-to-do-everybody-does}{%
+\subsection{You should not aim to do ``everybody
+does''}\label{you-should-not-aim-to-do-everybody-does}}
 
 This point might seem redundant in the light of what we indicated above
 about the importance of learning Statistics. However, our own experience
@@ -259,9 +266,9 @@ applicable in their case. Peer review is not perfect, and researchers
 need to internalize the fact that repetition is not enough to achieve
 reproducibility.
 
-\hypertarget{statistical-analyses-need-to-be-reproducible}{%
-\subsection{Statistical analyses need to be
-reproducible}\label{statistical-analyses-need-to-be-reproducible}}
+\hypertarget{your-statistical-analyses-need-to-be-reproducible}{%
+\subsection{Your statistical analyses need to be
+reproducible}\label{your-statistical-analyses-need-to-be-reproducible}}
 
 Biomedical data is complex and nowadays, computational skills are
 necessary to successfully analyze the datasets that are obtained as a
@@ -354,22 +361,6 @@ guides \\
 
 \normalsize
 
-\hypertarget{interpretation-is-more-important-than-a-p-value}{%
-\subsection{Interpretation is more important than a
-p-value}\label{interpretation-is-more-important-than-a-p-value}}
-
-p-values should not be the final goal of some data, but rather the
-interpretation by the researcher is what is important.
-
-\begin{itemize}
-\item
-  p-values and positive results continue to dominate the field
-\item
-  what a p-value actually tells (maybe example with data)?
-\item
-  p-value should not be the goal of a study
-\end{itemize}
-
 \hypertarget{models-are-just-that-models}{%
 \subsection{Models are just that,
 models}\label{models-are-just-that-models}}
@@ -381,6 +372,64 @@ models}\label{models-are-just-that-models}}
   Models are a simplification
 \item
   They offer an explanation, but that is not the only explanation
+\end{itemize}
+
+\hypertarget{significance-should-not-be-driven-by-a-p-value}{%
+\subsection{Significance should not be driven by a
+p-value}\label{significance-should-not-be-driven-by-a-p-value}}
+
+Perhaps the aspect of statistical reproducibility that biomedical
+researchers struggle the most is the concept of significance and its
+association with a \emph{p-value} below 0.05. Much has been said about
+the limitations of statistical tests and p-values, and how it is wrong
+to dichotomize the ``significance'' of a result on the basis of a
+p-value cutoff, and yet, this is still a prevalent practice in the
+field.
+
+Here, we will not attempt to provide another repetition of the facts
+that others have so eloquently provided about this topic (we refer the
+reader to the excellent works of Ziliak and
+McCloskey\textsuperscript{26}, Greenland et al.\textsuperscript{27},
+Wasserstein and Lazar\textsuperscript{28}, and Chia\textsuperscript{29}
+for discussions in detail), but we much rather try to bring light on why
+the ``p-value equals significance'' is so prevalent in biomedical
+research.
+
+In part, we believe that this approach has similar roots on the causes
+we described in Point 1: researchers view Statistics as a black box
+where multiple obscure terms such as ``distribution'', ``likelihood'',
+and ``parameters'' among others lie. On top of that, the language
+required to gain a proper understanding of a what a p-value tells
+requires technical language that for a non-statistician sounds obscure
+and purposely confusing
+
+The other part of the problem lies on the fact that the dichotomization
+of significance is rooted in the reward system that dominates the field.
+In other words, researchers perpetually suffer from
+``significant-itis''\textsuperscript{29} (believing that results are
+only good if the p-value is \textless0.05) because such results are
+viewed as correct, whereas higher p-values are immediately viewed as
+cause of ``failure''.
+
+These two facts create a vicious cycle that traps researchers early in
+their training stages, being passed on to those that enter the field.
+Add to this the fact that introductory statistical courses and textbooks
+typically do not discuss the limitations of a p-value in a clear
+way\textsuperscript{27}.
+
+The other part of the problem is what the view of statistical tests as
+an obscure and complicat
+
+p-values should not be the final goal of some data, but rather the
+interpretation by the researcher is what is important.
+
+\begin{itemize}
+\item
+  p-values and positive results continue to dominate the field
+\item
+  what a p-value actually tells (maybe example with data)?
+\item
+  p-value should not be the goal of a study
 \end{itemize}
 
 \hypertarget{references}{%
@@ -547,6 +596,33 @@ Press; 2018.}
 \CSLLeftMargin{25. }%
 \CSLRightInline{Xie Y. Bookdown: Authoring books and technical documents
 with r markdown. In: \emph{The {R} Series}. CRC Press; 2016:47-66.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-ziliak2008}{}}%
+\CSLLeftMargin{26. }%
+\CSLRightInline{Ziliak ST, McCloskey D. \emph{The Cult of Statistical
+Significance}. University of Michigan Press; 2008.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-greenland2016}{}}%
+\CSLLeftMargin{27. }%
+\CSLRightInline{Greenland S, Senn SJ, Rothman KJ, et al. Statistical
+tests, p values, confidence intervals, and power: A guide to
+misinterpretations. \emph{European Journal of Epidemiology}.
+2016;31(4):337-350.
+doi:\href{https://doi.org/10.1007/s10654-016-0149-3}{10.1007/s10654-016-0149-3}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-wasserstein2016}{}}%
+\CSLLeftMargin{28. }%
+\CSLRightInline{Wasserstein RL, Lazar NA. The {ASA} statement on
+\emph{p}-values: Context, process, and purpose. \emph{The American
+Statistician}. 2016;70(2):129-133.
+doi:\href{https://doi.org/10.1080/00031305.2016.1154108}{10.1080/00031305.2016.1154108}}
+
+\leavevmode\vadjust pre{\hypertarget{ref-chia1997}{}}%
+\CSLLeftMargin{29. }%
+\CSLRightInline{Chia K-S. "Significant-itis" --- an obsession with the
+p-value. \emph{Scandinavian Journal of Work, Environment \& Health}.
+1997;23(2):152-154. Accessed December 22, 2022.
+\url{http://www.jstor.org/stable/40966624}}
 
 \end{CSLReferences}
 

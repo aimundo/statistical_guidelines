@@ -4,7 +4,8 @@ titlerunning: Enhancing statistical reproducibility in the biomedical sciences
 #authorrunning: Short form of author list if too long for running head
 authors: 
 - name: "Ariel Mundo Ortiz"
-  address: École de santé publique, Université de Montréal, centre de recherches mathématiques, Université de Montréal
+- name: "Ariel Mundo Ortiz"
+  address: École de santé publique, Université de Montréal, \newline Centre de recherches mathématiques, Université de Montréal
   email: ariel.mundo.ortiz@umontreal.ca
 - name: "Bouchra Nasri"
   address: École de santé publique, Université de Montréal
